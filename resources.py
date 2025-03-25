@@ -1,5 +1,5 @@
 from flask_restful import Resource, reqparse, fields, marshal_with
-from .models import Music
+from models import Music
 from database import db
 
 #defining the arguments expected in the request
@@ -17,12 +17,6 @@ resource_fields = {
 }
 
 class MusicResource(Resource):
-    @marshal_with(resource_fields)
-    def get_all(self):
-        musics = Music.query.all()
-        return musics, 200
-
-
     @marshal_with(resource_fields)
     def get(self, music_id):
         music = Music.query.get(music_id)
@@ -59,3 +53,9 @@ class MusicResource(Resource):
         music.year = data['year']
         db.session.commit()
         return  music, 200
+
+class MusicListResource(Resource):
+    @marshal_with(resource_fields)
+    def get_all(self):
+        musics = Music.query.all()
+        return musics, 200
