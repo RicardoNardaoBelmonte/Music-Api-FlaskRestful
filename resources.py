@@ -56,6 +56,8 @@ class MusicResource(Resource):
 
 class MusicListResource(Resource):
     @marshal_with(resource_fields)
-    def get_all(self):
+    def get(self):#get_all
         musics = Music.query.all()
+        if not musics:
+            return {"message": "No musics Found"}, 404
         return musics, 200
