@@ -4,17 +4,23 @@ This is a simple project with python using FlaskRestful and other libraries, whe
 ## Features
 
 - **GET /music**: Return all musics stored in database.
+
 - **GET /music/{id}**: Returns one music by `id`.
+
 - **POST /music**: Add one new music to database.
+
 - **PUT /music/{id}**: Update data of a existing music `id`.
+
 - **DELETE /music/{id}**: Delete a specif music by `id`.
 
 ## Libraries Used
 
 - **Flask**: Development framework.
+
 - **Flask-RESTful**: Flask extension to create RESTful Apis quickly and in an organized way.
+
 - **Flask-SQLAlchemy**: Flask extension to integrate with SQL databases using SQLalchemy.
-- **Marshmallow**: For object situation and serialization.
+
 - **python-dotenv**: To load environment variables from a  `.env` file.
 
 ## Database creation
