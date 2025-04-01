@@ -20,7 +20,7 @@ def test_client():
 @pytest.fixture
 def sample_music_data():
     #returns the fields of the music
-    return {'artist': 'Test Artist', 'genre': 'Teste Genre', 'year': '2025'}
+    return {'artist': 'Test Artist', 'genre': 'Teste Genre', 'year': 2025}
 
 @pytest.fixture
 def created_music_id(test_client, sample_music_data):

@@ -1,4 +1,5 @@
 from flask_restful import Resource, reqparse, fields, marshal_with
+from sqlalchemy import Select
 from models import Music
 from database import db
 
@@ -19,7 +20,7 @@ resource_fields = {
 class MusicResource(Resource):
     @marshal_with(resource_fields)
     def get(self, music_id):
-        music = Music.query.get(music_id)
+        music = db.session.get(Music, music_id)
         if not music:
             return {"massage": "Music not found"}, 404
         return music, 200
@@ -34,7 +35,7 @@ class MusicResource(Resource):
 
 
     def delete(self, music_id):
-        music = Music.query.get(music_id)
+        music = db.session.get(Music, music_id)
         if not music:
             return {"message": "Music not Found"}, 404
         db.session.delete(music)
@@ -44,7 +45,7 @@ class MusicResource(Resource):
     @marshal_with(resource_fields)
     def put(self, music_id):
         data = music_args.parse_args() 
-        music = Music.query.get(music_id)
+        music = db.session.get(Music, music_id)
         if not music:
             return {"message": "Music not found"},404
         
@@ -57,7 +58,7 @@ class MusicResource(Resource):
 class MusicListResource(Resource):
     @marshal_with(resource_fields)
     def get(self):#get_all
-        musics = Music.query.all()
+        musics = db.session.scalars(Select(Music)).all() #new standard for selecting all the data from the table
         if not musics:
             return {"message": "No musics Found"}, 404
         return musics, 200
