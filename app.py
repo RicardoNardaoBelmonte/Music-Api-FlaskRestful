@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_restful import Api
 from config import Config # importing class config
-from database import db, configure_bdd
+from database import configure_bdd
 from resources import MusicResource, MusicListResource
 
 app = Flask(__name__)
