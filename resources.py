@@ -40,7 +40,7 @@ class MusicResource(Resource):
             return {"message": "Music not Found"}, 404
         db.session.delete(music)
         db.session.commit()
-        return {"message": "Music deleted"}, 204
+        return '', 204
 
     @marshal_with(resource_fields)
     def put(self, music_id):
