@@ -39,19 +39,25 @@ The database will be automatically created when the aplication is run, if the ta
 git clone https://github.com/RicardoNardaoBelmonte/ApiFlask.git
 ```
 
-2. **Active the virtual environment**
+2. **Create a new virtual environment**
 
 ```bash
-.\flask\Scripts\activate
+python -m venv name-of-virtual-environment
 ```
 
-3. **Download dependencies**
+3. **Active the virtual environment**
+
+```bash
+.\name-of-virtual-environment\Scripts\activate
+```
+
+4. **Download dependencies**
 
 ```bash
 pip install -r requirements.txt
 ```
 
-4. **Run app.py**
+5. **Run app.py**
 
 ```bash
 python app.py
